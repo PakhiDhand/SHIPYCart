@@ -21,10 +21,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.site.site_header = "SHIPYCart Admin"
+admin.site.site_title = "SHIPYCart Admin Portal"
+admin.site.index_title = "Welcome to SHIPYCart Admin Portal"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", include('home.urls'))
+    path("store/", include('store.urls')),
+    path("", include('home.urls')),
+    path("cart/", include('carts.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
